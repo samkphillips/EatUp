@@ -24,6 +24,8 @@
 
 EatUp is an in-development app aiming to disrupt the food delivery space by doing the same thing as everyone else but better.
 
+Development is managed and tracked on [Trello](https://trello.com/b/mRr49Es9/eat-up-app).
+
 ---
 
 **_Technologies Used_**
