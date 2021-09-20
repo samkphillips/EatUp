@@ -58,8 +58,28 @@ const ChangePassword = async (req, res) => {
   }
 }
 
+const DeleteUserAccount = async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: { email: req.body.email },
+      raw: true
+    })
+    if (
+      user &&
+      (await middleware.comparePassword(user.passwordDigest, req.body.password))
+    ) {
+      await User.destory({ where: { email: req.body.email } })
+      return res.send({ msg: `User Deleted with email ${req.body.email}` })
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   CreateNewUser,
   LogUserIn,
-  ChangePassword
+  ChangePassword,
+  DeleteUserAccount
 }
