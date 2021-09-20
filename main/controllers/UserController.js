@@ -35,7 +35,51 @@ const CreateNewUser = async (req, res) => {
   }
 }
 
+const ChangePassword = async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: { email: req.body.email }
+    })
+    if (
+      user &&
+      (await middleware.comparePassword(
+        user.dataValues.passwordDigest,
+        req.body.oldPassword
+      ))
+    ) {
+      const { newPassword } = req.body
+      let passwordDigest = await middleware.hashPassword(newPassword)
+      await user.update({ passwordDigest })
+      res.send({ status: 'success', msg: 'Password Updated' })
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+  } catch (error) {
+    throw error
+  }
+}
+
+const DeleteUserAccount = async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: { email: req.body.email },
+      raw: true
+    })
+    if (
+      user &&
+      (await middleware.comparePassword(user.passwordDigest, req.body.password))
+    ) {
+      await User.destory({ where: { email: req.body.email } })
+      return res.send({ msg: `User Deleted with email ${req.body.email}` })
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   CreateNewUser,
-  LogUserIn
+  LogUserIn,
+  ChangePassword,
+  DeleteUserAccount
 }
