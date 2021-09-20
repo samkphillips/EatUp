@@ -1,4 +1,4 @@
-const { Writer } = require('../models')
+const { User } = require('../models')
 const middleware = require('../middleware')
 
 const CreateNewUser = async (req, res) => {
