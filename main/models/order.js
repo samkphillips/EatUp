@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+'use strict'
+const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
     /**
@@ -11,36 +9,39 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Order.belongsTo(models.Restaurant,{
+      Order.belongsTo(models.Restaurant, {
         foreignKey: 'restaurantId'
       })
-      Order.belongsTo(models.User,{
+      Order.belongsTo(models.User, {
         foreignKey: 'userId'
       })
     }
-  };
-  Order.init({
-    orderItems: DataTypes.ARRAY(DataTypes.INTEGER),
-    restaurantId:{
-      type: Sequelize.INTEGER,
-      onDelete:'CASCADE',
-      references:{
-      model:'restaurants',
-      key:'id'
-    }
-    },
-    userId:{
-      type: Sequelize.INTEGER,
-      onDelete:'CASCADE',
-      references:{
-      model:'users',
-      key:'id'
-    }
   }
-}, {
-    sequelize,
-    modelName: 'Order',
-    tableName: 'orders'
-  });
-  return Order;
-};
+  Order.init(
+    {
+      orderItems: DataTypes.ARRAY(DataTypes.INTEGER),
+      restaurantId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'restaurants',
+          key: 'id'
+        }
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
+      }
+    },
+    {
+      sequelize,
+      modelName: 'Order',
+      tableName: 'orders'
+    }
+  )
+  return Order
+}
