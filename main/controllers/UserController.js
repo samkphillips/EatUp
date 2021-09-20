@@ -68,7 +68,7 @@ const DeleteUserAccount = async (req, res) => {
       user &&
       (await middleware.comparePassword(user.passwordDigest, req.body.password))
     ) {
-      await User.destory({ where: { email: req.body.email } })
+      await User.destroy({ where: { email: req.body.email } })
       return res.send({ msg: `User Deleted with email ${req.body.email}` })
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
