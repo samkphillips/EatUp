@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "eatup_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "eatup_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "eatup_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
