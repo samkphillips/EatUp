@@ -30,6 +30,24 @@ nav h3 {
   margin: 0 10px;
 }
 
+.restaurant-card {
+  background-color: #60985d;
+  border-radius: 3px;
+  margin: 10px;
+  padding: 10px;
+  height: 150px;
+  width: 200px;
+  overflow: auto;
+}
+
+.restaurant-list {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 .navlinks {
   margin: 10px;
   text-decoration: none;
