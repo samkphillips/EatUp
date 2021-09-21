@@ -20,6 +20,12 @@ router.get(
   middleware.verifyToken,
   controller.FindOrdersByUser
 )
+router.get(
+  '/order_ids/:order_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.OrderById
+)
 router.delete(
   '/deleteorder/:order_id',
   middleware.stripToken,

@@ -9,4 +9,10 @@ router.get(
   middleware.verifyToken,
   controller.FindMenuItemsByRestaurant
 )
+router.get(
+  '/singleitem/:menu_item_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.MenuItemById
+)
 module.exports = router
