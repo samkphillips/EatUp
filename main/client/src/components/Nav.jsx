@@ -8,35 +8,31 @@ export default function Nav({ authenticated, user, handleLogOut }) {
     authenticatedOptions = (
       <nav>
         <h3>Welcome {user.email}!</h3>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/myorders">My Orders</NavLink>
-        <NavLink onClick={handleLogOut} to="/">
+        <NavLink to="/" className="navlinks">Home</NavLink>
+        <NavLink to="/myorders" className="navlinks">My Orders</NavLink>
+        <NavLink to="/aboutus" className="navlinks">About Us</NavLink>
+        <h3>|</h3>
+        <NavLink onClick={handleLogOut} to="/" className="navlinks">
           Sign Out
         </NavLink>
-        <NavLink to="/aboutus">About Us</NavLink>
       </nav>
     )
   }
 
   const publicOptions = (
     <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/myorders">My Orders</NavLink>
-      <NavLink to="/signin">Sign In</NavLink>
-      <NavLink to="/aboutus">About Us</NavLink>
+      <NavLink to="/" className="navlinks">Home</NavLink>
+      <NavLink to="/myorders" className="navlinks">My Orders</NavLink>
+      <NavLink to="/aboutus" className="navlinks">About Us</NavLink>
+      <h3>|</h3>
+      <NavLink to="/signin" className="navlinks">Sign In</NavLink>
     </nav>
   )
 
   return (
     <header>
-      <NavLink to="/">eatUp Logo</NavLink>
+      <NavLink to="/" className="fake-logo">e</NavLink>
       {authenticated && user ? authenticatedOptions : publicOptions}
-      {/* <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/myorders">My Orders</NavLink>
-        <NavLink to="/signin">Sign In</NavLink>
-        <NavLink to="/aboutus">About Us</NavLink>
-      </nav> */}
     </header>
   )
 }
