@@ -31,6 +31,11 @@ const FindOrdersByUser = async (req, res) => {
   }
 }
 
+const OrderById = async (req, res) => {
+  const orderById = await Order.findByPk(req.params.order_id)
+  res.send(orderById)
+}
+
 const DeleteOrder = async (req, res) => {
   try {
     await Order.destroy({ where: { id: req.params.order_id } })
@@ -44,5 +49,6 @@ module.exports = {
   CreateOrder,
   FindOrdersByRestaurant,
   FindOrdersByUser,
+  OrderById,
   DeleteOrder
 }

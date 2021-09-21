@@ -41,6 +41,11 @@ const FindRestaurantByName = async (req, res) => {
   res.send(restaurantByName)
 }
 
+const FindRestaurantById = async (req, res) => {
+  const restaurantById = await Restaurant.findByPk(req.params.restaurant_id)
+  res.send(restaurantById)
+}
+
 // const emptyRestaurantDatabase = async (req, res) => {
 //   await Restaurant.destroy({ where: { id: { [Op.gt]: 0 } } })
 //   res.send('It is done. ')
@@ -52,5 +57,6 @@ module.exports = {
   FindRestaurantByState,
   FindRestaurantByFood,
   FindRestaurantByName /*,
-  emptyRestaurantDatabase*/
+  emptyRestaurantDatabase*/,
+  FindRestaurantById
 }

@@ -20,7 +20,13 @@ const FindMenuItemsByRestaurant = async (req, res) => {
   }
 }
 
+const MenuItemById = async (req, res) => {
+  const ItemById = await MenuItems.findByPk(req.params.menu_item_id)
+  res.send(ItemById)
+}
+
 module.exports = {
   CreateMenuItem,
-  FindMenuItemsByRestaurant
+  FindMenuItemsByRestaurant,
+  MenuItemById
 }
