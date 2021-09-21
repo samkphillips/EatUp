@@ -77,9 +77,15 @@ const DeleteUserAccount = async (req, res) => {
   }
 }
 
+const CheckSession = async (req, res) => {
+  const { payload } = res.locals
+  res.send(payload)
+}
+
 module.exports = {
   CreateNewUser,
   LogUserIn,
   ChangePassword,
-  DeleteUserAccount
+  DeleteUserAccount,
+  CheckSession
 }
