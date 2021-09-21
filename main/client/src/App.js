@@ -46,10 +46,9 @@ function App() {
       />
 
       <main>
-        <p>Howdy y'all</p>
-        {authenticated && user && <h3>Welcome {user.email}!</h3>}
+        {/* {authenticated && user && <h3>Welcome {user.email}!</h3>} */}
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={(props) => <Home {...props} />} />
           <Route path="/neworder/:restaurant_id" component={NewOrder} />
           <ProtectedRoute
             authenticated={authenticated}
