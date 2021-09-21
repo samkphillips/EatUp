@@ -25,15 +25,7 @@ export default function Nav({ authenticated, user, handleLogOut }) {
 
   return (
     <header>
-      {/* <NavLink to="/">
-        <div className="logo-wrapper" alt="logo">
-          <img
-            className="logo"
-            src="https://avatars.dicebear.com/api/gridy/app.svg"
-            alt="welcome banner"
-          />
-        </div>
-      </NavLink>
+      {/* <NavLink to="/">eatUp Logo</NavLink>
       {authenticated && user ? authenticatedOptions : publicOptions} */}
       <nav>
         <NavLink to="/">Home</NavLink>
