@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router'
 import Nav from './components/Nav'
+import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
 import NewOrder from './pages/NewOrder'
@@ -50,7 +51,12 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/neworder/:restaurant_id" component={NewOrder} />
-          <Route path="/myorders" component={MyOrders} />
+          <ProtectedRoute
+            authenticated={authenticated}
+            user={user}
+            path="/myorders"
+            component={MyOrders}
+          />
           <Route
             path="/signin"
             component={(props) => (
