@@ -33,7 +33,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     },
-    { sequelize, modelName: 'User', tableName: 'users' }
-  )
-  return User
-}
+   {
+    sequelize,
+    modelName: 'User',
+    tableName: 'users'
+  });
+  return User;
+};
