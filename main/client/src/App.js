@@ -10,7 +10,9 @@ import './styles/App.css'
 import { CheckSession } from './services/Auth'
 
 function App() {
-  const [authenticated, toggleAuthenticated] = useState(false)
+  const [authenticated, toggleAuthenticated] = useState(
+    false || localStorage.getItem('authenticated')
+  )
   const [user, setUser] = useState(null)
 
   const handleLogOut = () => {
@@ -24,6 +26,7 @@ function App() {
     const session = await CheckSession()
     setUser(session)
     toggleAuthenticated(true)
+    localStorage.setItem('authenticated', '1')
   }
 
   useEffect(() => {
