@@ -6,6 +6,7 @@ import AboutUs from './pages/AboutUs'
 import NewOrder from './pages/NewOrder'
 import MyOrders from './pages/MyOrders'
 import SignIn from './pages/SignIn'
+import './styles/App.css'
 import { CheckSession } from './services/Auth'
 
 function App() {
