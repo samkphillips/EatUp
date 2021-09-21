@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   MenuItems.init(
     {
+      name:{
+       type: DataTypes.STRING,
+       allowNull: false
+      },
       description: DataTypes.STRING,
       price: DataTypes.FLOAT,
       restaurantId: {
