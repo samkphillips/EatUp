@@ -13,8 +13,20 @@ export default function NewOrder(props) {
   }
 
   const itemClicked = async (e, item) => {
-    await setOrder([...order, item])
-    console.log(order)
+    let matchFound = false
+
+    order.forEach((o) => {
+      if (item.id === o.item.id && !matchFound) {
+        matchFound = true
+        o.qty++
+      }
+    })
+
+    if (!matchFound) {
+      await setOrder([...order, { item: item, qty: 1 }])
+    } else {
+      await setOrder([...order])
+    }
   }
 
   useEffect(() => {
@@ -26,13 +38,23 @@ export default function NewOrder(props) {
       <h1>Menu / Place New Order</h1>
       <h3>Restaurant ID: {props.match.params.restaurant_id}</h3>
       {order.length > 0 ? (
-        order.map((item) => <h3>Item {item.name}</h3>)
+        order.map((item) => (
+          <h3 key={`${item.item.name}-${item.item.id}`}>
+            Item {item.item.name}, qty: {item.qty}
+          </h3>
+        ))
       ) : (
         <h3>Click to add items to your order.</h3>
       )}
+      <button>Submit Order</button>
       {menu.length > 0 ? (
         menu.map((item) => (
-          <MenuItemCard {...props} handleClick={itemClicked} value={item} />
+          <MenuItemCard
+            {...props}
+            key={`${item.name}-${item.id}`}
+            handleClick={itemClicked}
+            value={item}
+          />
         ))
       ) : (
         <h3>No menu items.</h3>
