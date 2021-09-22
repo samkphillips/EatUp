@@ -63,3 +63,107 @@ nav h3 {
   text-decoration: none;
   color: #fff8f0;
 }
+
+.EatUp{
+  font-size: 30px;
+}
+.site p{
+  font-size: 22px;
+}
+
+.site{
+  margin: 50px auto;
+  margin-left: 50px;
+  margin-bottom: 60px;
+  line-height: 40px;
+  margin-top: 0px;
+}
+
+
+.about-background{
+  height: 200vh;
+  margin-top: 0px;
+  background: #F3E1B9;
+}
+
+.whole-team h2{
+  text-align: center;
+  font-size: 30px;
+}
+.team h3{
+  font-size: 55px;
+  color: white;
+  margin-left: 10px;
+}
+.team h4{
+  font-size: 25px;
+}
+.bullet{
+  margin-top: 30px;
+  font-size: 28px;
+  margin-left: 50px;
+  line-height: 50px;
+  color: white;
+}
+.links{
+  display: flex;
+  margin-top:60px;
+  color: white;
+}
+.links li{
+  margin-left: 100px;
+  text-decoration: none;
+  list-style: none;
+}
+a:link {
+  color: white;
+  background-color: transparent;
+}
+a:visited {
+  color: #2B2118;
+  background-color: transparent;
+  text-decoration: none;}
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+.meet{
+  text-align: center;
+  font-size: 40px;
+  text-decoration: underline;
+}
+.s-card{
+  background-color: #ED706E;
+}
+.m-card{
+  background-color: #2b2118;
+}
+.ms-card{
+  background-color: #79A9D1;
+}
+.team-container{
+  margin: 0 auto
+}
+.team{
+  margin-top: 80px;
+  font-size: 20px;
+  height: 300px;
+  margin-left: 100px;
+  margin-right: 100px;
+  border-radius: 15px;
+}
+
+.about-links{
+  text-decoration: none;
+  margin: 5px;
+  
+}
+
+.about-foot{
+  background: #60985d;
+  margin-top: 42px;
+  padding: 20px 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}

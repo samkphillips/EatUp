@@ -10,7 +10,7 @@ export default function Nav({ authenticated, user, handleLogOut }) {
         <h3>Welcome {user.email}!</h3>
         <NavLink to="/" className="navlinks">Home</NavLink>
         <NavLink to="/myorders" className="navlinks">My Orders</NavLink>
-        <NavLink to="/aboutus" className="navlinks">About Us</NavLink>
+        <NavLink to="/aboutus" className="navlinks about-nav">About Us</NavLink>
         <h3>|</h3>
         <NavLink onClick={handleLogOut} to="/" className="navlinks">
           Sign Out
