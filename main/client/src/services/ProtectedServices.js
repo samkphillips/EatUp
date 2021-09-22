@@ -8,3 +8,12 @@ export const GetMenuByRestaurantId = async (restaurant_id) => {
     throw error
   }
 }
+
+export const CreateNewOrder = async (data) => {
+  try {
+    const res = await Client.post(`/api/order/neworder`, data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
