@@ -26,3 +26,12 @@ export const GetOrdersByUser = async (userId) => {
     throw error
   }
 }
+
+export const GetMenuItemById = async (id) => {
+  try {
+    const res = await Client.get(`/api/menu_items/singleitem/${id}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
