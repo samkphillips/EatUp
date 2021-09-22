@@ -14,6 +14,10 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('menu_items')
+    await queryInterface.bulkDelete('menu_items', null, {
+      truncate: true,
+      cascade: true,
+      restartIdentity: true
+    })
   }
 }
