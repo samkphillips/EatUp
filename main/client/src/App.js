@@ -59,7 +59,7 @@ function App() {
             authenticated={authenticated}
             user={user}
             path="/myorders"
-            component={MyOrders}
+            component={(props) => <MyOrders {...props} user={user} />}
           />
           <Route
             path="/signin"

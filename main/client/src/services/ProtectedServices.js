@@ -17,3 +17,12 @@ export const CreateNewOrder = async (data) => {
     throw error
   }
 }
+
+export const GetOrdersByUser = async (userId) => {
+  try {
+    const res = await Client.get(`/api/order/userorders/${userId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

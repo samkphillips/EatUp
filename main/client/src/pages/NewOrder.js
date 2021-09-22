@@ -48,6 +48,8 @@ export default function NewOrder(props) {
       restaurantId: parseInt(props.match.params.restaurant_id),
       userId: props.user.id
     })
+
+    props.history.push(`/myorders`)
   }
 
   useEffect(() => {
