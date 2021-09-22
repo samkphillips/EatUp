@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import MenuItemCard from '../components/MenuItemCard'
-import { GetMenuByRestaurantId } from '../services/ProtectedServices'
+import {
+  GetMenuByRestaurantId,
+  CreateNewOrder
+} from '../services/ProtectedServices'
 
 export default function NewOrder(props) {
   const [menu, setMenu] = useState([])
@@ -29,6 +32,24 @@ export default function NewOrder(props) {
     }
   }
 
+  const submitOrder = async () => {
+    const parsedOrder = []
+
+    order.forEach((orderItem) => {
+      for (let i = 0; i < orderItem.qty; i++) {
+        parsedOrder.push(orderItem.item.id)
+      }
+    })
+
+    console.log(parsedOrder)
+
+    await CreateNewOrder({
+      orderItems: parsedOrder,
+      restaurantId: parseInt(props.match.params.restaurant_id),
+      userId: props.user.id
+    })
+  }
+
   useEffect(() => {
     getMenu()
   }, [])
@@ -46,7 +67,7 @@ export default function NewOrder(props) {
       ) : (
         <h3>Click to add items to your order.</h3>
       )}
-      <button>Submit Order</button>
+      <button onClick={submitOrder}>Submit Order</button>
       {menu.length > 0 ? (
         menu.map((item) => (
           <MenuItemCard

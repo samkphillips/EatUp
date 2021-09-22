@@ -53,7 +53,7 @@ function App() {
             authenticated={authenticated}
             user={user}
             path="/neworder/:restaurant_id"
-            component={(props) => <NewOrder {...props} />}
+            component={(props) => <NewOrder {...props} user={user} />}
           />
           <ProtectedRoute
             authenticated={authenticated}
