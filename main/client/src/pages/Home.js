@@ -92,6 +92,7 @@ export default function Home(props) {
               name={r.name}
               address={r.address}
               foodTags={r.foodTags}
+              restaurantId={r.id}
             />
           ))
         ) : (

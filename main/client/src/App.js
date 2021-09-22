@@ -49,7 +49,12 @@ function App() {
         {/* {authenticated && user && <h3>Welcome {user.email}!</h3>} */}
         <Switch>
           <Route exact path="/" component={(props) => <Home {...props} />} />
-          <Route path="/neworder/:restaurant_id" component={NewOrder} />
+          <ProtectedRoute
+            authenticated={authenticated}
+            user={user}
+            path="/neworder/:restaurant_id"
+            component={(props) => <NewOrder {...props} />}
+          />
           <ProtectedRoute
             authenticated={authenticated}
             user={user}
