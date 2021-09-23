@@ -69,7 +69,9 @@ export default function NewOrder(props) {
       ) : (
         <h3>Click to add items to your order.</h3>
       )}
-      <button onClick={submitOrder}>Submit Order</button>
+      <button onClick={submitOrder} disabled={order.length < 1}>
+        Submit Order
+      </button>
       {menu.length > 0 ? (
         menu.map((item) => (
           <MenuItemCard
