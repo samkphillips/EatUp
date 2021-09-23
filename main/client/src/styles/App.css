@@ -230,7 +230,6 @@ nav h3 {
 }
 
 .body.aboutus {
-  height: 200vh;
   margin-top: 0px;
   background: #f3e1b9;
 }
@@ -291,6 +290,7 @@ nav h3 {
 }
 .ms-card {
   background-color: #79a9d1;
+  margin-bottom: 100px;
 }
 .team-container {
   margin: 0 auto;
@@ -309,14 +309,6 @@ nav h3 {
 .about-links {
   text-decoration: none;
   margin: 5px;
-}
-
-.about-foot {
-  background: #60985d;
-  margin-top: 42px;
-  padding: 20px 20px;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 .myorder {

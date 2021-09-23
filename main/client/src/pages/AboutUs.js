@@ -93,12 +93,8 @@ export default function AboutUs() {
             </ul>
           </div>
         </div>
+        <h6>.</h6>
       </div>
-      <footer className="about-foot">
-        <ul>
-          <li>hi</li>
-        </ul>
-      </footer>
     </div>
   )
 }
