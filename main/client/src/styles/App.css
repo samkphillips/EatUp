@@ -312,12 +312,10 @@ nav h3 {
 }
 
 .myorder {
-  margin-left: 50px;
-  margin-top: 130px;
+  margin: 10px;
   line-height: 50px;
   border: 2px solid black;
-  width: 300px;
-  height: fit-content;
+  width: 60%;
   padding: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -332,18 +330,17 @@ nav h3 {
   font-size: 45px;
   margin-left: 30px;
 }
+
 .myorder h3 {
   font-size: 28px;
   text-decoration: underline;
   margin-left: 10px;
+  text-align: center;
 }
 
 .myorder-contain {
-  /* display: flex;   */
-  height: 300px;
-  width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-/* .body.aboutus {
-  background-color: aquamarine;
-} */
