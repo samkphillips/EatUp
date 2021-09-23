@@ -82,9 +82,6 @@ export default function NewOrder(props) {
       <h3>Restaurant ID: {props.match.params.restaurant_id}</h3>
       {order.length > 0 ? (
         order.map((item, i) => (
-          // <h3 key={`${item.item.name}-${item.item.id}`}>
-          //   Item {item.item.name}, qty: {item.qty}
-          // </h3>
           <OrderItem
             key={`${item.item.name}-${item.item.id}`}
             orderItem={item}
