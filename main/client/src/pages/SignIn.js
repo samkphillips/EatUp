@@ -1,11 +1,20 @@
 import React, { useState } from 'react'
-import { SignInUser } from '../services/Auth'
+import { SignInUser, RegisterUser } from '../services/Auth'
+
+const iStateSignIn = {
+  email: '',
+  password: ''
+}
+
+const iStateRegister = {
+  name: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+}
 
 export default function SignIn(props) {
-  const [signInFormValues, setSignInFormValues] = useState({
-    email: '',
-    password: ''
-  })
+  const [signInFormValues, setSignInFormValues] = useState(iStateSignIn)
 
   const signInHandleChange = (e) => {
     setSignInFormValues({
@@ -14,13 +23,38 @@ export default function SignIn(props) {
     })
   }
 
-  const handleSubmit = async (e) => {
+  const signInHandleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(signInFormValues)
-    setSignInFormValues({ email: '', password: '' })
+    setSignInFormValues(iStateSignIn)
     props.setUser(payload)
     props.toggleAuthenticated(true)
-    props.history.push('/feed')
+    props.history.push('/')
+  }
+
+  const [registerFormValues, setRegisterFormValues] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  })
+
+  const registerHandleChange = (e) => {
+    setRegisterFormValues({
+      ...registerFormValues,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const registerHandleSubmit = async (e) => {
+    e.preventDefault()
+    await RegisterUser({
+      name: registerFormValues.name,
+      email: registerFormValues.email,
+      password: registerFormValues.password
+    })
+    setRegisterFormValues(iStateRegister)
+    props.history.push('/signin')
   }
 
   const tempSignIn = async (e) => {
@@ -38,7 +72,7 @@ export default function SignIn(props) {
       <div>
         <h1>Sign In</h1>
         <button onClick={tempSignIn}>Fake Sign In</button>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={signInHandleSubmit}>
           <div>
             <label htmlFor="email">Email</label>
             <input
@@ -67,8 +101,64 @@ export default function SignIn(props) {
           </button>
         </form>
       </div>
+
       <div>
         <h1>Sign Up</h1>
+        <form onSubmit={registerHandleSubmit}>
+          <div>
+            <label htmlFor="name">Name</label>
+            <input
+              onChange={registerHandleChange}
+              name="name"
+              type="text"
+              placeholder="John Smith"
+              value={registerFormValues.name}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              onChange={registerHandleChange}
+              name="email"
+              type="email"
+              placeholder="example@example.com"
+              value={registerFormValues.email}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              onChange={registerHandleChange}
+              type="password"
+              name="password"
+              value={registerFormValues.password}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              onChange={registerHandleChange}
+              type="password"
+              name="confirmPassword"
+              value={registerFormValues.confirmPassword}
+              required
+            />
+          </div>
+          <button
+            disabled={
+              !registerFormValues.name ||
+              !registerFormValues.email ||
+              !registerFormValues.password ||
+              registerFormValues.confirmPassword !== registerFormValues.password
+            }
+          >
+            Sign Up
+          </button>
+        </form>
       </div>
     </div>
   )
