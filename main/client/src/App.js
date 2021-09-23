@@ -41,6 +41,8 @@ function App() {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken().then(() => setLoading(false))
+    } else {
+      setLoading(false)
     }
   }, [])
 
