@@ -2,10 +2,18 @@
 const faker = require('faker')
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    const randFoodName = () => {
+      const protein = ['Chicken', 'Beef', 'Pork', 'Tofu', 'Falafel']
+      const format = ['Tacos', 'Pasta', 'Sandwich', 'Burrito', 'Soup']
+      const proteinResult = protein[Math.floor(Math.random() * protein.length)]
+      const formatResult = format[Math.floor(Math.random() * format.length)]
+      return `${proteinResult} ${formatResult}`
+    }
+
     let menu_items = [...Array(10000)].map((_) => ({
-      name: faker.fake('{{company.bsAdjective}} {{company.bsNoun}}'),
+      name: randFoodName(),
       description: faker.lorem.sentence(),
-      price: faker.commerce.price(),
+      price: faker.commerce.price() / 100,
       restaurantId: Math.floor(Math.random() * 1000) + 1,
       createdAt: faker.date.past(),
       updatedAt: faker.date.recent()
