@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import MenuItemCard from '../components/MenuItemCard'
+import OrderItem from '../components/OrderItem'
 import {
   GetMenuByRestaurantId,
   CreateNewOrder
@@ -62,12 +63,13 @@ export default function NewOrder(props) {
       <h3>Restaurant ID: {props.match.params.restaurant_id}</h3>
       {order.length > 0 ? (
         order.map((item) => (
-          <h3 key={`${item.item.name}-${item.item.id}`}>
-            Item {item.item.name}, qty: {item.qty}
-          </h3>
+          // <h3 key={`${item.item.name}-${item.item.id}`}>
+          //   Item {item.item.name}, qty: {item.qty}
+          // </h3>
+          <OrderItem />
         ))
       ) : (
-        <h3>Click to add items to your order.</h3>
+        <h3>Click below to add items to your order.</h3>
       )}
       <button onClick={submitOrder} disabled={order.length < 1}>
         Submit Order
