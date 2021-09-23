@@ -191,6 +191,29 @@ nav h3 {
   color: #ed706e;
 }
 
+.order-submit-button {
+  height: 30px;
+  margin: 7px;
+  padding: 3px;
+  border: 2px solid #60985d;
+  border-radius: 3px;
+  background-color: #60985d;
+  color: #fff8f0;
+}
+
+.order-submit-button:hover {
+  cursor: pointer;
+  background-color: #fff8f0;
+  color: #60985d;
+}
+
+.order-submit-button:disabled {
+  opacity: 0.5;
+  background-color: #60985d;
+  color: #fff8f0;
+  cursor: not-allowed;
+}
+
 .EatUp {
   font-size: 30px;
 }

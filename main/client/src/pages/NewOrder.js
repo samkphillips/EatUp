@@ -81,6 +81,14 @@ export default function NewOrder(props) {
     }
   }
 
+  const orderTotal = () => {
+    let sum = 0
+    order.forEach((item) => {
+      sum += item.item.price * item.qty
+    })
+    return sum
+  }
+
   useEffect(() => {
     getMenu()
     getRestaurantInfo()
@@ -120,9 +128,14 @@ export default function NewOrder(props) {
               />
             ))
           ) : (
-            <h3>Click below to add items to your order.</h3>
+            <h3>Click menu items to add to your order.</h3>
           )}
-          <button onClick={submitOrder} disabled={order.length < 1}>
+          <h3>Order Total: ${orderTotal()}</h3>
+          <button
+            onClick={submitOrder}
+            disabled={order.length < 1}
+            className="order-submit-button"
+          >
             Submit Order
           </button>
         </div>
