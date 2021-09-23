@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import MenuItemCard from '../components/MenuItemCard'
 import OrderItem from '../components/OrderItem'
+import { BASE_URL } from '../globals'
 import {
   GetMenuByRestaurantId,
   CreateNewOrder
@@ -10,10 +11,18 @@ import {
 export default function NewOrder(props) {
   const [menu, setMenu] = useState([])
   const [order, setOrder] = useState([])
+  const [restaurantInfo, setRestaurantInfo] = useState({})
 
   const getMenu = async () => {
     const res = await GetMenuByRestaurantId(props.match.params.restaurant_id)
     setMenu(res)
+  }
+
+  const getRestaurantInfo = async () => {
+    const res = await axios.get(
+      `${BASE_URL}/restaurant/search/id/${props.match.params.restaurant_id}`
+    )
+    setRestaurantInfo(res.data)
   }
 
   const itemClicked = async (e, item) => {
@@ -74,40 +83,50 @@ export default function NewOrder(props) {
 
   useEffect(() => {
     getMenu()
+    getRestaurantInfo()
   }, [])
 
   return (
     <div>
-      <h1>Menu / Place New Order</h1>
-      <h3>Restaurant ID: {props.match.params.restaurant_id}</h3>
-      {order.length > 0 ? (
-        order.map((item, i) => (
-          <OrderItem
-            key={`${item.item.name}-${item.item.id}`}
-            orderItem={item}
-            orderIndex={i}
-            incrementItemQuantity={incrementItemQuantity}
-            removeItemFromOrder={removeItemFromOrder}
-          />
-        ))
-      ) : (
-        <h3>Click below to add items to your order.</h3>
-      )}
-      <button onClick={submitOrder} disabled={order.length < 1}>
-        Submit Order
-      </button>
-      {menu.length > 0 ? (
-        menu.map((item) => (
-          <MenuItemCard
-            {...props}
-            key={`${item.name}-${item.id}`}
-            handleClick={itemClicked}
-            value={item}
-          />
-        ))
-      ) : (
-        <h3>No menu items.</h3>
-      )}
+      <div className="order-screen-split">
+        <div className="menu-split">
+          <h2>Menu</h2>
+          <div className="menu-display">
+            {menu.length > 0 ? (
+              menu.map((item) => (
+                <MenuItemCard
+                  {...props}
+                  key={`${item.name}-${item.id}`}
+                  handleClick={itemClicked}
+                  value={item}
+                />
+              ))
+            ) : (
+              <h3>No menu items.</h3>
+            )}
+          </div>
+        </div>
+        <div className="order-display">
+          <h3>{restaurantInfo.name}</h3>
+          <h4>Address: {restaurantInfo.address}</h4>
+          {order.length > 0 ? (
+            order.map((item, i) => (
+              <OrderItem
+                key={`${item.item.name}-${item.item.id}`}
+                orderItem={item}
+                orderIndex={i}
+                incrementItemQuantity={incrementItemQuantity}
+                removeItemFromOrder={removeItemFromOrder}
+              />
+            ))
+          ) : (
+            <h3>Click below to add items to your order.</h3>
+          )}
+          <button onClick={submitOrder} disabled={order.length < 1}>
+            Submit Order
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

@@ -74,8 +74,7 @@ nav h3 {
   border-radius: 3px;
   margin: 10px;
   padding: 10px;
-  height: 160px;
-  width: 200px;
+  width: 90%;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -88,6 +87,31 @@ nav h3 {
   cursor: pointer;
   background-color: #79a9d1;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+}
+
+.order-screen-split {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.menu-split {
+  width: 70%;
+}
+
+.menu-display {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.order-display {
+  width: calc(30% - 30px);
+  min-width: 280px;
+  padding: 15px;
+  background-color: #f3e1b9;
+  color: #2b2118;
 }
 
 .navlinks {
@@ -116,10 +140,55 @@ nav h3 {
   height: 30px;
   margin: 7px;
   padding: 3px;
+  border: 2px solid #60985d;
+  border-radius: 3px;
+  background-color: #60985d;
+  color: #fff8f0;
+}
+
+.search-container select:hover,
+.search-container button:hover {
+  cursor: pointer;
+  background-color: #fff8f0;
+  color: #60985d;
+}
+
+.current-order-item {
+  border: 2px solid #2b2118;
+  border-radius: 3px;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.current-order-item button {
+  height: 30px;
+  margin: 7px;
+  padding: 3px 7px;
   border: none;
   border-radius: 3px;
   background-color: #60985d;
   color: #fff8f0;
+}
+
+.current-order-item .button-increment {
+  background-color: #60985d;
+  color: #fff8f0;
+}
+
+.current-order-item .button-increment:hover {
+  cursor: pointer;
+  background-color: #fff8f0;
+  color: #60985d;
+}
+
+.current-order-item .button-remove {
+  background-color: #ed706e;
+}
+
+.current-order-item .button-remove:hover {
+  cursor: pointer;
+  background-color: #fff8f0;
+  color: #ed706e;
 }
 
 .EatUp {
