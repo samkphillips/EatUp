@@ -57,21 +57,10 @@ export default function SignIn(props) {
     props.history.push('/signin')
   }
 
-  const tempSignIn = async (e) => {
-    const payload = await SignInUser({
-      email: 'example@fakemail.com',
-      password: '1234'
-    })
-    props.setUser(payload)
-    props.toggleAuthenticated(true)
-    props.history.push('/')
-  }
-
   return (
     <div className="sign-in-page">
       <div>
         <h1>Sign In</h1>
-        <button onClick={tempSignIn}>Fake Sign In</button>
         <form onSubmit={signInHandleSubmit}>
           <div>
             <label htmlFor="email">Email</label>

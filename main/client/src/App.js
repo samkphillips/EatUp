@@ -11,6 +11,7 @@ import './styles/App.css'
 import { CheckSession } from './services/Auth'
 
 function App() {
+  const [loading, setLoading] = useState(true)
   const [authenticated, toggleAuthenticated] = useState(
     false || localStorage.getItem('authenticated')
   )
@@ -33,47 +34,59 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
-      checkToken()
+      checkToken().then(() => setLoading(false))
     }
   }, [])
 
   return (
     <div className="App">
-      <Nav
-        authenticated={authenticated}
-        user={user}
-        handleLogOut={handleLogOut}
-      />
+      {loading ? (
+        <div>
+          <h3>Loading</h3>
+        </div>
+      ) : (
+        <div>
+          <Nav
+            authenticated={authenticated}
+            user={user}
+            handleLogOut={handleLogOut}
+          />
 
-      <main>
-        {/* {authenticated && user && <h3>Welcome {user.email}!</h3>} */}
-        <Switch>
-          <Route exact path="/" component={(props) => <Home {...props} />} />
-          <ProtectedRoute
-            authenticated={authenticated}
-            user={user}
-            path="/neworder/:restaurant_id"
-            component={(props) => <NewOrder {...props} user={user} />}
-          />
-          <ProtectedRoute
-            authenticated={authenticated}
-            user={user}
-            path="/myorders"
-            component={(props) => <MyOrders {...props} user={user} />}
-          />
-          <Route
-            path="/signin"
-            component={(props) => (
-              <SignIn
-                {...props}
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
+          <main>
+            {/* {authenticated && user && <h3>Welcome {user.email}!</h3>} */}
+            <Switch>
+              <Route
+                exact
+                path="/"
+                component={(props) => <Home {...props} />}
               />
-            )}
-          />
-          <Route path="/aboutus" component={AboutUs} />
-        </Switch>
-      </main>
+              <ProtectedRoute
+                authenticated={authenticated}
+                user={user}
+                path="/neworder/:restaurant_id"
+                component={(props) => <NewOrder {...props} user={user} />}
+              />
+              <ProtectedRoute
+                authenticated={authenticated}
+                user={user}
+                path="/myorders"
+                component={(props) => <MyOrders {...props} user={user} />}
+              />
+              <Route
+                path="/signin"
+                component={(props) => (
+                  <SignIn
+                    {...props}
+                    setUser={setUser}
+                    toggleAuthenticated={toggleAuthenticated}
+                  />
+                )}
+              />
+              <Route path="/aboutus" component={AboutUs} />
+            </Switch>
+          </main>
+        </div>
+      )}
     </div>
   )
 }
