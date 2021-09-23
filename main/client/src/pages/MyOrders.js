@@ -48,7 +48,8 @@ export default function MyOrders(props) {
             id: taco,
             qty: 1,
             name: menuItem.name,
-            description: menuItem.description
+            description: menuItem.description,
+            price: menuItem.price
           })
         }
       }
