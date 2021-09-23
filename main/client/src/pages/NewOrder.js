@@ -53,6 +53,25 @@ export default function NewOrder(props) {
     props.history.push(`/myorders`)
   }
 
+  const incrementItemQuantity = (index, value) => {
+    let copyArr = [...order]
+    copyArr[index].qty += value
+
+    if (copyArr[index].qty <= 0) {
+      removeItemFromOrder(index)
+    } else {
+      setOrder(copyArr)
+    }
+  }
+
+  const removeItemFromOrder = (index) => {
+    if (index === order.length - 1) {
+      setOrder(order.slice(0, index))
+    } else {
+      setOrder([...order.slice(0, index), ...order.slice(index + 1)])
+    }
+  }
+
   useEffect(() => {
     getMenu()
   }, [])
@@ -62,11 +81,17 @@ export default function NewOrder(props) {
       <h1>Menu / Place New Order</h1>
       <h3>Restaurant ID: {props.match.params.restaurant_id}</h3>
       {order.length > 0 ? (
-        order.map((item) => (
+        order.map((item, i) => (
           // <h3 key={`${item.item.name}-${item.item.id}`}>
           //   Item {item.item.name}, qty: {item.qty}
           // </h3>
-          <OrderItem />
+          <OrderItem
+            key={`${item.item.name}-${item.item.id}`}
+            orderItem={item}
+            orderIndex={i}
+            incrementItemQuantity={incrementItemQuantity}
+            removeItemFromOrder={removeItemFromOrder}
+          />
         ))
       ) : (
         <h3>Click below to add items to your order.</h3>
