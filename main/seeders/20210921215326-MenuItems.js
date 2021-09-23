@@ -3,8 +3,40 @@ const faker = require('faker')
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const randFoodName = () => {
-      const protein = ['Chicken', 'Beef', 'Pork', 'Tofu', 'Falafel']
-      const format = ['Tacos', 'Pasta', 'Sandwich', 'Burrito', 'Soup']
+      const protein = [
+        'Chicken',
+        'Beef',
+        'Pork',
+        'Tofu',
+        'Falafel',
+        'Duck',
+        'Salmon',
+        'Turkey',
+        'Egg',
+        'Tuna',
+        'Shrimp',
+        'Lobster',
+        'Califlower',
+        'Bison',
+        'Lentil',
+        'Pumpkin'
+      ]
+      const format = [
+        'Tacos',
+        'Pasta',
+        'Sandwich',
+        'Burrito',
+        'Soup',
+        'Burger',
+        'Dip',
+        'Fries',
+        'Waffles',
+        'Pancakes',
+        'Pie',
+        'Stir-fry',
+        'Casserole',
+        'and Rice'
+      ]
       const proteinResult = protein[Math.floor(Math.random() * protein.length)]
       const formatResult = format[Math.floor(Math.random() * format.length)]
       return `${proteinResult} ${formatResult}`
