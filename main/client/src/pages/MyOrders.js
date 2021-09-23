@@ -65,15 +65,18 @@ export default function MyOrders(props) {
   }, [])
 
   return (
-    <div>
-      <h1>Past Orders</h1>
+    <div className="myorder-contain">
+      <h1>Past Orders:</h1>
       {orders.length > 0 ? (
         orders.map((item) => (
-          <div>
+          <div className="myorder">
             <h3>{item.restaurantName}</h3>
             {item.orderItems.map((i) => (
-              <h5>{`${i.name} qty ${i.qty}`}</h5>
-            ))}
+              <h4>{`${i.name} | qty: ${i.qty}`}</h4>
+              ))}
+              {/* {item.orderItems.map((i) => (
+              <h4>{`qty: ${i.qty}`}</h4>
+              ))} */}
           </div>
         ))
       ) : (
@@ -82,3 +85,5 @@ export default function MyOrders(props) {
     </div>
   )
 }
+
+// qty: ${i.qty}
