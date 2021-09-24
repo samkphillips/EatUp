@@ -21,8 +21,6 @@ function App() {
   const path = useLocation().pathname
   const location = path.split('/')[1]
 
-  console.log(location)
-
   const handleLogOut = () => {
     //Reset all auth related state and clear localstorage
     setUser(null)

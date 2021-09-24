@@ -51,8 +51,6 @@ export default function NewOrder(props) {
       }
     })
 
-    console.log(parsedOrder)
-
     await CreateNewOrder({
       orderItems: parsedOrder,
       restaurantId: parseInt(props.match.params.restaurant_id),
@@ -92,6 +90,7 @@ export default function NewOrder(props) {
   useEffect(() => {
     getMenu()
     getRestaurantInfo()
+    // eslint-disable-next-line
   }, [])
 
   return (

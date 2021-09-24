@@ -71,6 +71,7 @@ export default function MyOrders(props) {
 
   useEffect(() => {
     getOrders()
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -78,10 +79,15 @@ export default function MyOrders(props) {
       <h1>Past Orders:</h1>
       {orders.length > 0 ? (
         orders.map((item) => (
-          <div className="myorder">
+          <div
+            className="myorder"
+            key={`${item.restaurantName}-${item.orderDate}`}
+          >
             <h3>{item.restaurantName}</h3>
             {item.orderItems.map((i) => (
-              <h4>{`${i.name} | qty: ${i.qty} | price: $${i.price}`}</h4>
+              <h4 key={`${i.id}-${i.id}`}>
+                {`${i.name} | qty: ${i.qty} | price: $${i.price}`}
+              </h4>
             ))}
             <h4>Order Total: ${item.orderTotal}</h4>
           </div>
