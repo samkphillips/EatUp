@@ -42,7 +42,7 @@ module.exports = {
       return `${proteinResult} ${formatResult}`
     }
 
-    let menu_items = [...Array(8000)].map((_) => ({
+    let menu_items = [...Array(7000)].map((_) => ({
       name: randFoodName(),
       description: faker.lorem.sentence(),
       price: faker.commerce.price() / 100 + 2,
