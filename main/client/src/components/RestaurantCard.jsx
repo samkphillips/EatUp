@@ -7,9 +7,9 @@ const RestaurantCard = (props) => {
   
   return (
     <div className='restaurant-card' onClick={handleClick}>
-      <h1>{props.name}</h1>
+      <h3>{props.name}</h3>
       <h5>{props.address}</h5>
-      <h3>{`Tags: ${props.foodTags}`}</h3>
+      <h4>{`Tags: ${props.foodTags}`}</h4>
     </div>
   )
 }

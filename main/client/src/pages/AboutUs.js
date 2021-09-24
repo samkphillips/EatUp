@@ -3,7 +3,7 @@ import '../styles/App.css'
 
 export default function AboutUs() {
   return (
-    <div className="about-background">
+    <div className="about-page about-background">
       <div className="site">
         <h2 className="EatUp">What Is EatUp?</h2>
         <p>
@@ -93,12 +93,8 @@ export default function AboutUs() {
             </ul>
           </div>
         </div>
+        <h6>.</h6>
       </div>
-      <footer className="about-foot">
-        <ul>
-          <li>hi</li>
-        </ul>
-      </footer>
     </div>
   )
 }

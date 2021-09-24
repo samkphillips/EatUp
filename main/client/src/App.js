@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router'
+import { useLocation } from 'react-router-dom'
 import Nav from './components/Nav'
 import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
@@ -16,6 +17,11 @@ function App() {
     false || localStorage.getItem('authenticated')
   )
   const [user, setUser] = useState(null)
+
+  const path = useLocation().pathname
+  const location = path.split('/')[1]
+
+  console.log(location)
 
   const handleLogOut = () => {
     //Reset all auth related state and clear localstorage
@@ -35,6 +41,8 @@ function App() {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken().then(() => setLoading(false))
+    } else {
+      setLoading(false)
     }
   }, [])
 
@@ -45,12 +53,14 @@ function App() {
           <h3>Loading</h3>
         </div>
       ) : (
-        <div>
-          <Nav
-            authenticated={authenticated}
-            user={user}
-            handleLogOut={handleLogOut}
-          />
+        <div className={'body ' + location}>
+          <div>
+            <Nav
+              authenticated={authenticated}
+              user={user}
+              handleLogOut={handleLogOut}
+            />
+          </div>
 
           <main>
             {/* {authenticated && user && <h3>Welcome {user.email}!</h3>} */}
