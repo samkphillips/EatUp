@@ -3,7 +3,21 @@ const faker = require('faker')
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const randFood = () => {
-      const foodArr = ['Pizza', 'Sushi', 'Greek', 'Chinese', 'Indian']
+      const foodArr = [
+        'Pizza',
+        'Sushi',
+        'Greek',
+        'Chinese',
+        'Indian',
+        'Mexican',
+        'Salads',
+        'Hamburgers',
+        'Dessert',
+        'Breakfast',
+        'Italian',
+        'Vegetarian',
+        'Smoothies'
+      ]
       const foodNumber = Math.floor(Math.random() * foodArr.length)
       return foodArr[foodNumber]
     }
