@@ -90,6 +90,7 @@ nav h3 {
 }
 
 .order-screen-split {
+  min-height: calc(100vh - 62px);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

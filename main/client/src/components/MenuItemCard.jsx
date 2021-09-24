@@ -8,7 +8,7 @@ const MenuItemCard = (props) => {
   return (
     <div className='menu-item-card' onClick={handleClick}>
       <h1>{props.value.name}</h1>
-      <h3>${props.value.price}</h3>
+      <h3>${props.value.price.toFixed(2)}</h3>
       <h5>{props.value.description}</h5>
     </div>
   )

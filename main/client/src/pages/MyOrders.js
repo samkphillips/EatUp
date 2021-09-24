@@ -50,7 +50,7 @@ export default function MyOrders(props) {
             qty: 1,
             name: menuItem.name,
             description: menuItem.description,
-            price: menuItem.price
+            price: menuItem.price.toFixed(2)
           })
         }
       }
@@ -61,7 +61,7 @@ export default function MyOrders(props) {
         sum += item.price * item.qty
       })
 
-      parsedOrder.orderTotal = sum
+      parsedOrder.orderTotal = sum.toFixed(2)
 
       parsedOrderList.push(parsedOrder)
     }

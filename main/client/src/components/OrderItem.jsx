@@ -12,7 +12,7 @@ const OrderItem = (props) => {
   return (
     <div className="current-order-item">
       <h3>{props.orderItem.item.name}</h3>
-      <h4>{`$${props.orderItem.item.price}, qty ${props.orderItem.qty}, item total: $${props.orderItem.item.price * props.orderItem.qty}`}</h4>
+      <h4>{`$${props.orderItem.item.price.toFixed(2)}, qty ${props.orderItem.qty}, item total: $${(props.orderItem.item.price * props.orderItem.qty).toFixed(2)}`}</h4>
       <h5>{props.orderItem.item.description}</h5>
       <button onClick={incrementHelper} value={1} className='button-increment'>+</button>
       <button onClick={incrementHelper} value={-1} className='button-increment'>-</button>
