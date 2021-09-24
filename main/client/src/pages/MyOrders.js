@@ -50,7 +50,7 @@ export default function MyOrders(props) {
             qty: 1,
             name: menuItem.name,
             description: menuItem.description,
-            price: menuItem.price
+            price: menuItem.price.toFixed(2)
           })
         }
       }
@@ -61,7 +61,7 @@ export default function MyOrders(props) {
         sum += item.price * item.qty
       })
 
-      parsedOrder.orderTotal = sum
+      parsedOrder.orderTotal = sum.toFixed(2)
 
       parsedOrderList.push(parsedOrder)
     }
@@ -71,6 +71,7 @@ export default function MyOrders(props) {
 
   useEffect(() => {
     getOrders()
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -78,10 +79,15 @@ export default function MyOrders(props) {
       <h1>Past Orders:</h1>
       {orders.length > 0 ? (
         orders.map((item) => (
-          <div className="myorder">
+          <div
+            className="myorder"
+            key={`${item.restaurantName}-${item.orderDate}`}
+          >
             <h3>{item.restaurantName}</h3>
             {item.orderItems.map((i) => (
-              <h4>{`${i.name} | qty: ${i.qty} | price: $${i.price}`}</h4>
+              <h4 key={`${i.id}-${i.id}`}>
+                {`${i.name} | qty: ${i.qty} | price: $${i.price}`}
+              </h4>
             ))}
             <h4>Order Total: ${item.orderTotal}</h4>
           </div>

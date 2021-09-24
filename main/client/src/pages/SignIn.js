@@ -59,7 +59,7 @@ export default function SignIn(props) {
 
   return (
     <div className="sign-in-page">
-      <div>
+      <div className="sign-in-split">
         <h1>Sign In</h1>
         <form onSubmit={signInHandleSubmit}>
           <div>
@@ -91,7 +91,7 @@ export default function SignIn(props) {
         </form>
       </div>
 
-      <div>
+      <div className="sign-up-split">
         <h1>Sign Up</h1>
         <form onSubmit={registerHandleSubmit}>
           <div>

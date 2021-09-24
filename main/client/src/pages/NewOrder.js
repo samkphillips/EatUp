@@ -51,8 +51,6 @@ export default function NewOrder(props) {
       }
     })
 
-    console.log(parsedOrder)
-
     await CreateNewOrder({
       orderItems: parsedOrder,
       restaurantId: parseInt(props.match.params.restaurant_id),
@@ -92,6 +90,7 @@ export default function NewOrder(props) {
   useEffect(() => {
     getMenu()
     getRestaurantInfo()
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -130,7 +129,7 @@ export default function NewOrder(props) {
           ) : (
             <h3>Click menu items to add to your order.</h3>
           )}
-          <h3>Order Total: ${orderTotal()}</h3>
+          <h3>Order Total: ${orderTotal().toFixed(2)}</h3>
           <button
             onClick={submitOrder}
             disabled={order.length < 1}

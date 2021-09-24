@@ -5,6 +5,7 @@ import RestaurantCard from '../components/RestaurantCard'
 
 export default function Home(props) {
   const [restaurants, setRestaurants] = useState([])
+  const [hasSearched, setHasSearched] = useState(false)
 
   const getRestaurantsByState = async (state) => {
     const res = await axios.get(`${BASE_URL}/restaurant/search/state/${state}`)
@@ -14,6 +15,7 @@ export default function Home(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     getRestaurantsByState(e.target[0].value)
+    setHasSearched(true)
   }
 
   return (
@@ -88,7 +90,16 @@ export default function Home(props) {
             />
           ))
         ) : (
-          <h3>No results yet.</h3>
+          <div>
+            {hasSearched ? (
+              <h3 style={{ color: '#fff8f0', margin: '10px' }}>Loading...</h3>
+            ) : (
+              <h3 style={{ color: '#fff8f0', margin: '10px' }}>
+                Please enter your state above to search for restaurants near
+                you.
+              </h3>
+            )}
+          </div>
         )}
       </div>
     </div>
