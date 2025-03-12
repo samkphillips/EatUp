@@ -37,7 +37,7 @@ Development is managed and tracked on [Trello](https://trello.com/b/mRr49Es9/eat
   - Express
   - React
   - Node
-- Heroku
+- Railway
 
 ---
 
