@@ -24,7 +24,7 @@
 
 EatUp is an in-development app aiming to disrupt the food delivery space by doing the same thing as everyone else but better.
 
-Visit the site [HERE](https://mysterious-beach-08090.herokuapp.com/)
+Visit the site [HERE](https://eatup-production.up.railway.app/)
 
 Development is managed and tracked on [Trello](https://trello.com/b/mRr49Es9/eat-up-app).
 
@@ -43,7 +43,7 @@ Development is managed and tracked on [Trello](https://trello.com/b/mRr49Es9/eat
 
 **_Getting Started_**
 
-Simply head over to our site at [this link](https://mysterious-beach-08090.herokuapp.com/).
+Simply head over to our site at [this link](https://eatup-production.up.railway.app/).
 
 Then create an account, find a new favorite restaurant, and place your order.
 
